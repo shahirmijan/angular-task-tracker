@@ -5,3 +5,10 @@ A simple task tracker built using:
 - Node JS
 - Angular
 - Bootstrap
+- Jasmine testing
+
+# Getting started
+
+Download this repository, and run the following commands in order:
+- npm i
+- ng serve
