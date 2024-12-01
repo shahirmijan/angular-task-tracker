@@ -1,0 +1,35 @@
+<div class="task-tracker-container d-flex justify-content-center" data-testid="todo-1">
+    
+    <div class="col-4 p-3 m-3 task-form d-flex flex-column justify-content-center">
+        <input type="text" [(ngModel)]="taskTitle" placeholder="Title"/>
+        <textarea type="textarea" rows="4" [(ngModel)]="taskDescription" placeholder="Description"></textarea>
+        <button class="add-task-btn" (click)="addTask(taskTitle, taskDescription)">Add Task</button>
+
+        <p class="mt-4">Title: <i>{{taskTitle}}</i></p>
+        <p class="">Description: <i>{{taskDescription}}</i></p>
+        <p><i>{{errorMsg}}</i></p>
+    </div>
+
+    <div class="col-4 p-3 m-3 incomplete-col">
+        <h3 class="p-3">Incomplete</h3>
+        <ul>
+            <li class="taskTicket w-100" *ngFor="let item of listOfTasks; let itemNumber = index"> 
+                <h6 class="fw-bold">{{ item.title }}</h6>
+                <p class="fw-light">{{ item.description }}</p>
+                <button (click)="deleteTask(itemNumber)" *ngIf="listOfTasks[itemNumber]">Completed</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-4 p-3 m-3 completed-col">
+        <h3 class="p-3">Completed</h3>
+        <div *ngIf="completedTask.length != 0;">
+            <ul>
+                <li class="completedTaskTicket w-100" *ngFor="let completedItem of completedTask">
+                    <h6 class="fw-bold">{{ completedItem.title }}</h6>
+                    <p class="fw-light">{{ completedItem.description }}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
